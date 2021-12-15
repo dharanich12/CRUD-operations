@@ -1,0 +1,85 @@
+CRUD OPERTIONS
+
+a)add employee-
+POST http://localhost:2120/emp-dir/add-employee
+
+Request : body
+{
+     "emp_id" : 100,
+     "emp_name" : "alex ",
+     "password" : "12345"
+}
+
+Response : heades&body
+body
+{  
+     "status" : 100
+     "message" : "success"
+}
+
+b)read operation
+ 
+list of employee
+POST http://localhost:2120/emp-dir/del-employee
+request
+
+headers: query params
+ 
+Response:
+heades  200 ok2
+
+body
+{
+     "status":200
+     "message" : "success"
+}
+
+
+code
+
+#%RAML 1.0
+title: payslip-api
+description: employee payslip api
+baseUri:  http://localhost:2120/payslip-api/
+
+/add-employee:
+  post:
+    body:
+      application/json:
+        example:
+          {
+           "emp id" : 100,
+           "emp name" : " Alex ",
+           "password" : "12345",
+           "status" : "A"
+          }
+    responses:
+        200:
+          body:
+            application/json:
+              example:
+                { 
+                  "status" : "200",
+                  "message" : "login successful"
+                }
+    
+/read-employee:
+  post:
+    body:
+       application/json:
+           example:
+            {
+              "select date" : "01-11-2021",
+              "working days" : "25",
+              "employee earnings" : "2000",
+              "employee deduction" : "500"
+            }
+    responses:
+       500:
+        body:
+          application/json:
+             example:
+                  {
+                      "status" : "500",
+                       "message" :"succesfully generated"
+                  }
